@@ -11,15 +11,15 @@ const List = ({ items, removeItem, editItem }) => {
             <div className='btn-container'>
               <button
                 type='button'
+                style={{ outline: "none" }}
                 className='edit-btn'
-                onClick={() => {
-                  editItem(id);
-                }}
+                onClick={() => editItem(id)}
               >
                 <FaEdit />
               </button>
               <button
                 type='button'
+                style={{ outline: "none" }}
                 className='delete-btn'
                 onClick={() => removeItem(id)}
               >

@@ -12,7 +12,7 @@ const Alert = ({ type, msg, list, removeAlert }) => {
       clearTimeout(timeout);
     };
   }, [list]);
-
+  //the classNames: alert alert (success or danger) with the conditional msg
   return <p className={`alert alert-${type}`}>{msg}</p>;
 };
 

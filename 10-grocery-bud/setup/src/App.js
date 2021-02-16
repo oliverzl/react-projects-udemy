@@ -9,6 +9,7 @@ import List from "./List";
 import Alert from "./Alert";
 
 // ====================================================================== LOCAL STORAGE FUNCTION ======================================================================
+//this is to preserve the values if they were already in the list on refresh.
 const getLocalStorage = () => {
   let list = localStorage.getItem("list");
   if (list) {

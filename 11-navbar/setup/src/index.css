@@ -58,8 +58,8 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -96,12 +96,16 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+button {
+  outline: none;
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: xrem;
   }
   h3 {
     font-size: 1.75rem;
@@ -181,6 +185,7 @@ nav {
 .social-icons {
   display: none;
 }
+/* we need the links-container as the parent , because the ref.current.getBoundingClientRect().height is 0 */
 .links-container {
   height: 0;
   overflow: hidden;
@@ -204,6 +209,8 @@ nav {
   .nav-toggle {
     display: none;
   }
+
+  /* we have auto !important below because we have inline css in useRefs back in Navbar, so we need to override the inline styles */
   .links-container {
     height: auto !important;
   }
