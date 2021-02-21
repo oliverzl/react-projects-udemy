@@ -16,7 +16,7 @@ const Navbar = () => {
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
-  //this is the useEffect that makes the dynamic height of the links work, depending on the amount of links. in css, the media query for links-container has !important
+  //this is the useEffect that makes the dynamic height of the links work, depending on the amount of links. in css, the media query for links-container has !important1
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     if (showLinks) {
