@@ -2,10 +2,10 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import sublinks from "./data";
 import { useGlobalContext } from "./context";
-//in this sidebar, we need to do double iteration, because our lnks inside data.js is nested one level down.
+
+//there are multiple iterations in sublinks, because we have links inside data that is NESTED
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
-
   return (
     <aside
       className={`${
@@ -17,6 +17,7 @@ const Sidebar = () => {
           <FaTimes />
         </button>
         <div className='sidebar-links'>
+          {/* here we have a double map with double returns */}
           {sublinks.map((item, index) => {
             const { links, page } = item;
             return (
