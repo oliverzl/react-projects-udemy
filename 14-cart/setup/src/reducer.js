@@ -84,7 +84,6 @@ const reducer = (state, action) => {
     return { ...state, cart: tempCart };
   }
   throw new Error("no matching action type");
-
   return state;
 };
 
