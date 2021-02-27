@@ -29,6 +29,8 @@ const CartItem = ({ id, img, title, price, amount }) => {
           </svg>
         </button> */}
 
+        {/* the toggleAmount function is fixed to every arrow up and arrow down buttons inside every cartItem. */}
+        {/* each item has its own arrow up and down button, and the toggleAmount's id follows the response.json() id = the arrows belong to the cartItem itself, allowing us to use toggleAmount for increasing or decreasing:  */}
         <button className='amount-btn' onClick={() => toggleAmount(id, "inc")}>
           <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
             <path d='M10.707 7.05L10 6.343 4.343 12l1.414 1.414L10 9.172l4.243 4.242L15.657 12z' />

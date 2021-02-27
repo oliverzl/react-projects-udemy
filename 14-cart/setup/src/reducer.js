@@ -12,29 +12,32 @@ const reducer = (state, action) => {
   }
 
   //THIS IS THE REFACTORING OF DECREASE AND INCREASE INTO ONE SINGLE FUNCTION, INSTEAD OF HAVING TWO DISTINCT ACTION.TYPES
-  if (action.type === "INCREASE") {
-    let tempCart = state.cart.map((cartItem) => {
-      if (cartItem.id === action.payload) {
-        return { ...cartItem, amount: cartItem.amount + 1 };
-      }
-      return cartItem;
-    });
-    return { ...state, cart: tempCart };
-  }
+
+  // ------------ INCREASE DISPATCH HERE -----------------
+  // if (action.type === "INCREASE") {
+  //   let tempCart = state.cart.map((cartItem) => {
+  //     if (cartItem.id === action.payload) {
+  //       return { ...cartItem, amount: cartItem.amount + 1 };
+  //     }
+  //     return cartItem;
+  //   });
+  //   return { ...state, cart: tempCart };
+  // }
 
   //for the decrease, we also want to add the functionality that if we decrease BELOW ONE, we just delete the item entirely from the cart.
 
-  if (action.type === "DECREASE") {
-    let tempCart = state.cart
-      .map((cartItem) => {
-        if (cartItem.id === action.payload) {
-          return { ...cartItem, amount: cartItem.amount - 1 };
-        }
-        return cartItem;
-      })
-      .filter((cartItem) => cartItem.amount !== 0);
-    return { ...state, cart: tempCart };
-  }
+  // ------------ DECREASE DISPATCH HERE -----------------
+  // if (action.type === "DECREASE") {
+  //   let tempCart = state.cart
+  //     .map((cartItem) => {
+  //       if (cartItem.id === action.payload) {
+  //         return { ...cartItem, amount: cartItem.amount - 1 };
+  //       }
+  //       return cartItem;
+  //     })
+  //     .filter((cartItem) => cartItem.amount !== 0);
+  //   return { ...state, cart: tempCart };
+  // }
 
   //this action type deals with the icon on the top right corner, showcasing the quantity of all the items inside the cart, and the bottom right corner, where it displays the PRICE.
   if (action.type === "GET_TOTALS") {
@@ -64,26 +67,24 @@ const reducer = (state, action) => {
     return { ...state, cart: action.payload, loading: false };
   }
 
+  //this is the updated action.type, for increase and decrease to be in the same dispatch.
   if (action.type === "TOGGLE_AMOUNT") {
     let tempCart = state.cart
       .map((cartItem) => {
-        //this is the first case where the cartItem.id MATCHES the action.payload.id
         if (cartItem.id === action.payload.id) {
           if (action.payload.type === "inc") {
             return { ...cartItem, amount: cartItem.amount + 1 };
           }
           if (action.payload.type === "dec") {
-            return { ...cartItem, amount: cartItem.amount + 1 };
+            return { ...cartItem, amount: cartItem.amount - 1 };
           }
-        }
-        return cartItem;
+        } else return cartItem;
       })
       .filter((cartItem) => cartItem.amount !== 0);
-
-    //we still set up a map for this, however in this case, we will check if we are increasing or decreasing, and then we will also change the values
+    //the above filter is to remove any item from the list, through subtracting its itemCount in the cart to less than 0.
+    //we CANNOT USE < 0 for the filter method: < 0 would mean that, as long as any item in the cart is subtracted, ALL ITEMS in the cart would be deleted.
     return { ...state, cart: tempCart };
   }
-  throw new Error("no matching action type");
   return state;
 };
 

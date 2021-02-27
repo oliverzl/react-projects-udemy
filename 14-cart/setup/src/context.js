@@ -8,7 +8,7 @@ const AppContext = React.createContext();
 const initialState = {
   loading: false,
   //cartItems is an array of objects from data.js.
-  cart: cartItems,
+  cart: [],
   total: 0,
   amount: 0,
 };
@@ -23,13 +23,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "REMOVE", payload: id });
   };
 
-  const increase = (id) => {
-    dispatch({ type: "INCREASE", payload: id });
-  };
+  //increase and decrease dispatch functions
+  // const increase = (id) => {
+  //   dispatch({ type: "INCREASE", payload: id });
+  // };
 
-  const decrease = (id) => {
-    dispatch({ type: "DECREASE", payload: id });
-  };
+  // const decrease = (id) => {
+  //   dispatch({ type: "DECREASE", payload: id });
+  // };
 
   //fetch data
   const fetchData = async () => {
@@ -60,8 +61,8 @@ const AppProvider = ({ children }) => {
         ...state,
         clearCart,
         remove,
-        increase,
-        decrease,
+        // increase,
+        // decrease,
         toggleAmount,
       }}
     >
