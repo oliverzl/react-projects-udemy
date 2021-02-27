@@ -39,7 +39,7 @@ const reducer = (state, action) => {
   //   return { ...state, cart: tempCart };
   // }
 
-  //this action type deals with the icon on the top right corner, showcasing the quantity of all the items inside the cart, and the bottom right corner, where it displays the PRICE.
+  // GET_TOTALS:    this action type deals with the icon on the top right corner, showcasing the quantity of all the items inside the cart, and the bottom right corner, where it displays the PRICE.
   if (action.type === "GET_TOTALS") {
     let { total, amount } = state.cart.reduce(
       (cartTotal, cartItem) => {
@@ -80,9 +80,8 @@ const reducer = (state, action) => {
           }
         } else return cartItem;
       })
-      .filter((cartItem) => cartItem.amount !== 0);
-    //the above filter is to remove any item from the list, through subtracting its itemCount in the cart to less than 0.
-    //we CANNOT USE < 0 for the filter method: < 0 would mean that, as long as any item in the cart is subtracted, ALL ITEMS in the cart would be deleted.
+      .filter((cartItem) => cartItem.amount <= 0);
+    //after subtracting or adding the cartItems, we then filter out the list. the filter above will only RETURN THE CARTITEMS AMOUNT THAT'S NOT 0. IF IT IS 0, IT IS REMOVED FROM THE CART.
     return { ...state, cart: tempCart };
   }
   return state;
