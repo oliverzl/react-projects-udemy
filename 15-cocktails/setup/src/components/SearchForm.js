@@ -1,12 +1,12 @@
-import React from 'react'
-import { useGlobalContext } from '../context'
+//every time we type, we invoke the function setSearchTerm, and we pass in the value that comes in through the form.
+import React from "react";
+import { useGlobalContext } from "../context";
 
 const SearchForm = () => {
-  return (
-    <div>
-      <h2>search form component</h2>
-    </div>
-  )
-}
+  //immediately destructuring the setSearchTerm from the object returned from useGlobalContext();
+  const { setSearchTerm } = useGlobalContext();
 
-export default SearchForm
+  return <h2>SearchFormComponent</h2>;
+};
+
+export default SearchForm;
