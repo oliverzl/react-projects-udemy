@@ -10,9 +10,12 @@ import { useGlobalContext } from "../context";
 const CocktailList = () => {
   const { loading, cocktails } = useGlobalContext();
 
+  //conditional returns based on states of the react app:
+  //only if its not loading, and there are elements in cocktails array : cocktails.length ! < 1
   if (loading) {
     return <Loading />;
   }
+
   if (cocktails.length < 1) {
     return (
       <h2 className='section-title'>
@@ -21,9 +24,14 @@ const CocktailList = () => {
     );
   }
   return (
-    <div>
-      <h2>cocktail list component</h2>
-    </div>
+    <section className='section'>
+      <h2 className='section-title'>Cocktails</h2>
+      <div className='cocktails-center'>
+        {cocktails.map((cocktail) => {
+          return <Cocktail key={cocktail.id} {...cocktail} />;
+        })}
+      </div>
+    </section>
   );
 };
 
