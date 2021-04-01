@@ -96,6 +96,10 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-5);
 }
+
+button {
+  outline-style: none;
+}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;

@@ -1,0 +1,1 @@
+IN THIS PROJECT THE COMPONENTS MAKE THE PAGES, AND THE SWITCHING OF THE PAGES MAKES THE APP ITSELF. navbar will always be displayed, and conditional rendering of pages occurs, dependant on the rendering and conditions of state in the components as well. 

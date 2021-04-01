@@ -17,6 +17,7 @@ const Submenu = () => {
     submenu.style.left = `${center}px`;
     submenu.style.top = `${bottom}px`;
 
+    //here is conditional rendering for the length of the submenu depending on the amount of items inside the submenu.
     if (links.length === 3) {
       setColumns("col-3");
     }

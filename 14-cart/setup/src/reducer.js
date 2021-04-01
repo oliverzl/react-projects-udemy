@@ -80,7 +80,7 @@ const reducer = (state, action) => {
           }
         } else return cartItem;
       })
-      .filter((cartItem) => cartItem.amount <= 0);
+      .filter((cartItem) => cartItem.amount !== 0);
     //after subtracting or adding the cartItems, we then filter out the list. the filter above will only RETURN THE CARTITEMS AMOUNT THAT'S NOT 0. IF IT IS 0, IT IS REMOVED FROM THE CART.
     return { ...state, cart: tempCart };
   }

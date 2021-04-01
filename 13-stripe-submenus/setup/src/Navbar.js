@@ -4,6 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
+  //we immediately destructure the functions and possible state values from useGlobalContext. remember, useGlobalContext function call returns useContext(AppContext);
   const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
   const displaySubmenu = (event) => {
     const page = event.target.textContent;
@@ -13,8 +14,15 @@ const Navbar = () => {
 
     openSubmenu(page, { center, bottom });
   };
+
+  //we cannot implement closing the submenu on navbar mouseOver, because the links itself that triggers the display of submenus resides directly in navbar. if we implement the same thing as in the hero component, submenu will not even be displayed.
+  const handleSubmenu = (event) => {
+    if (!event.target.classList.contains("link-btn")) {
+      closeSubmenu();
+    }
+  };
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={handleSubmenu}>
       <div className='nav-center'>
         <div className='nav-header'>
           <img className='nav-logo' src={logo} alt='stripe' />
