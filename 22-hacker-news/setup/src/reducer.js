@@ -6,6 +6,8 @@ const reducer = (state, action) => {
 			return { ...state, isLoading: true };
 		case SET_STORIES:
 			return { ...state, isLoading: false, hits: action.payload.hits, nbPages: action.payload.nbPages };
+		case REMOVE_STORY:
+			return { ...state, hits: state.hits.filter((story) => story.objectID !== action.payload) };
 		default:
 			throw new Error(`no matching "${action.type}" action`);
 	}
