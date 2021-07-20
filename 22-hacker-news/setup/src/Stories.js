@@ -16,6 +16,16 @@ const Stories = () => {
 				return (
 					<article key={objectID} className="story">
 						<h4 className="title">{title}</h4>
+						<p className="info">
+							{points} points by <span>{author} | </span> {num_comments}{" "}
+						</p>
+						<div>
+							{/* this opens up a new tab! */}
+							<a href={url} className="read-link" target="_blank" rel="noopener noreferrer">
+								read more
+							</a>
+							<button className="remove-btn">remove</button>
+						</div>
 					</article>
 				);
 			})}
