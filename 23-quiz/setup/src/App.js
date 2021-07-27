@@ -18,11 +18,22 @@ function App() {
 		return <Loading />;
 	}
 
-	console.log(questions);
-
 	const { question, incorrect_answers, correct_answer } = questions[index];
-	const answers = [...incorrect_answers, correct_answer];
+	//the line below will set the last answer as the correct answer always
+	// const answers = [...incorrect_answers, correct_answer];
 
+	//below, we will set the correct answer to be randomized
+	let answers = [...incorrect_answers];
+	const tempIndex = Math.floor(Math.random() * 4);
+
+	if (tempIndex === 3) {
+		answers.push(correct_answer);
+	} else {
+		answers.push(answers[tempIndex]);
+		answers[tempIndex] = correct_answer;
+	}
+
+	console.log(tempIndex);
 	return (
 		<main>
 			<Modal />
