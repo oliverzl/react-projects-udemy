@@ -1,0 +1,1 @@
+in the components folder, there is an index.js file that is being imported into Dashboard.js component. this is to shorten the lines of code inside Dashboard, instead of importing everything one by one inside components, the index.js imports everything then EXPORTS the whole list to Dashboard.js.
