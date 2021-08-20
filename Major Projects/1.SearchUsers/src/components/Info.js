@@ -8,7 +8,6 @@ const UserInfo = () => {
 	//destructuring githubUser from the context object
 	const { githubUser } = useContext(GithubContext);
 	const { public_repos, followers, following, public_gists } = githubUser;
-	console.log(public_repos);
 
 	const items = [
 		{
